@@ -25,7 +25,7 @@ struct ActivityIndicator: NSViewRepresentable {
     }
 }
 #else
-@available(iOS 13, *)
+@available(iOS 15, *)
 struct ActivityIndicator: UIViewRepresentable {
 
     func makeUIView(context: UIViewRepresentableContext<ActivityIndicator>) -> UIActivityIndicatorView {

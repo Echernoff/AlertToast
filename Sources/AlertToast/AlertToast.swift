@@ -11,7 +11,7 @@
 import SwiftUI
 import Combine
 
-@available(iOS 13, macOS 11, *)
+@available(iOS 15.0, *)
 fileprivate struct AnimatedCheckmark: View {
     
     ///Checkmark color
@@ -46,7 +46,7 @@ fileprivate struct AnimatedCheckmark: View {
     }
 }
 
-@available(iOS 13, macOS 11, *)
+@available(iOS 15.0, *)
 fileprivate struct AnimatedXmark: View {
     
     ///xmark color
@@ -88,7 +88,7 @@ fileprivate struct AnimatedXmark: View {
 
 //MARK: - Main View
 
-@available(iOS 13, macOS 11, *)
+@available(iOS 15.0, *)
 public struct AlertToast: View{
     
     public enum BannerAnimation{
@@ -399,7 +399,7 @@ public struct AlertToast: View{
     }
 }
 
-@available(iOS 13, macOS 11, *)
+@available(iOS 15.0, *)
 public struct AlertToastModifier: ViewModifier{
     
     ///Presentation `Binding<Bool>`
@@ -596,7 +596,7 @@ public struct AlertToastModifier: ViewModifier{
 }
 
 ///Fileprivate View Modifier for dynamic frame when alert type is `.regular` / `.loading`
-@available(iOS 13, macOS 11, *)
+@available(iOS 15.0, *)
 fileprivate struct WithFrameModifier: ViewModifier{
     
     var withFrame: Bool
@@ -616,7 +616,7 @@ fileprivate struct WithFrameModifier: ViewModifier{
 }
 
 ///Fileprivate View Modifier to change the alert background
-@available(iOS 13, macOS 11, *)
+@available(iOS 15.0, *)
 fileprivate struct BackgroundModifier: ViewModifier{
     
     var color: Color?
@@ -634,7 +634,7 @@ fileprivate struct BackgroundModifier: ViewModifier{
 }
 
 ///Fileprivate View Modifier to change the text colors
-@available(iOS 13, macOS 11, *)
+@available(iOS 15.0, *)
 fileprivate struct TextForegroundModifier: ViewModifier{
     
     var color: Color?
@@ -650,7 +650,7 @@ fileprivate struct TextForegroundModifier: ViewModifier{
     }
 }
 
-@available(iOS 13, macOS 11, *)
+@available(iOS 15.0, *)
 fileprivate extension Image{
     
     func hudModifier() -> some View{
@@ -663,6 +663,7 @@ fileprivate extension Image{
 }
 
 //@available(iOS 13, macOS 11, *)
+@available(iOS 15.0, *)
 public extension View{
     
     /// Return some view w/o frame depends on the condition.
@@ -697,12 +698,6 @@ public extension View{
     }
     
     @ViewBuilder fileprivate func valueChanged<T: Equatable>(value: T, onChange: @escaping (T) -> Void) -> some View {
-        if #available(iOS 14.0, *) {
             self.onChange(of: value, perform: onChange)
-        } else {
-            self.onReceive(Just(value)) { (value) in
-                onChange(value)
-            }
-        }
     }
 }
